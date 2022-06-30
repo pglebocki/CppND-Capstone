@@ -2,12 +2,9 @@
 #include <iostream>
 #include <string>
 
-Renderer::Renderer(const std::size_t screen_width,
-                   const std::size_t screen_height)
-    : screen_width(screen_width),
-      screen_height(screen_height)
+Renderer::Renderer(const std::size_t screen_size)
+    : screen_size(screen_size)
 {
-
   // Initialize SDL
   if (SDL_Init(SDL_INIT_VIDEO) < 0)
   {
@@ -17,8 +14,8 @@ Renderer::Renderer(const std::size_t screen_width,
 
   // Create Window
   sdl_window = SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED,
-                                SDL_WINDOWPOS_CENTERED, screen_width,
-                                screen_height, SDL_WINDOW_SHOWN);
+                                SDL_WINDOWPOS_CENTERED, screen_size,
+                                screen_size, SDL_WINDOW_SHOWN);
 
   if (nullptr == sdl_window)
   {
@@ -47,10 +44,10 @@ void Renderer::Render(int buffer[])
   SDL_SetRenderDrawColor(sdl_renderer, 0, 0, 0, 0);
   SDL_RenderClear(sdl_renderer);
 
-  for (int i = 0; i < screen_width; ++i)
-    for (int j = 0; j < screen_height; ++j)
+  for (int i = 0; i < screen_size; ++i)
+    for (int j = 0; j < screen_size; ++j)
     {
-      int index = i * screen_width + j;
+      int index = i * screen_size + j;
       int color = buffer[index];
       SDL_SetRenderDrawColor(sdl_renderer, color, 0, 0, 255);
       SDL_RenderDrawPoint(sdl_renderer, j, i);

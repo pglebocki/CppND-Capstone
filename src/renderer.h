@@ -6,7 +6,7 @@
 
 class Renderer {
  public:
-  Renderer(const std::size_t screen_width, const std::size_t screen_height);
+  Renderer(const std::size_t screen_size);
   ~Renderer();
 
   void Render(int buffer[]);
@@ -16,8 +16,7 @@ class Renderer {
   SDL_Window *sdl_window;
   SDL_Renderer *sdl_renderer;
 
-  const std::size_t screen_width;
-  const std::size_t screen_height;
+  const std::size_t screen_size;
 };
 
 #endif

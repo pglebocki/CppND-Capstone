@@ -2,34 +2,34 @@
 #include <iostream>
 #include "SDL.h"
 
+Controller::Controller(void (*onMouseClickEvent)(int, int))
+    : onMouseClickEvent(onMouseClickEvent),
+      mousePressed(false)
+{
+}
 
-void Controller::HandleInput() const {
-  // SDL_Event e;
-  // while (SDL_PollEvent(&e)) {
-  //   if (e.type == SDL_QUIT) {
-  //     running = false;
-  //   } else if (e.type == SDL_KEYDOWN) {
-  //     switch (e.key.keysym.sym) {
-  //       case SDLK_UP:
-  //         ChangeDirection(snake, Snake::Direction::kUp,
-  //                         Snake::Direction::kDown);
-  //         break;
+void Controller::HandleInput()
+{
+  SDL_Event event;
+  while (true)
+  {
+    SDL_PollEvent(&event);
+    switch (event.type)
+    {
+    case SDL_QUIT:
+      return;
 
-  //       case SDLK_DOWN:
-  //         ChangeDirection(snake, Snake::Direction::kDown,
-  //                         Snake::Direction::kUp);
-  //         break;
-
-  //       case SDLK_LEFT:
-  //         ChangeDirection(snake, Snake::Direction::kLeft,
-  //                         Snake::Direction::kRight);
-  //         break;
-
-  //       case SDLK_RIGHT:
-  //         ChangeDirection(snake, Snake::Direction::kRight,
-  //                         Snake::Direction::kLeft);
-  //         break;
-  //     }
-  //   }
-  // }
+    case SDL_MOUSEBUTTONDOWN:
+      if (!mousePressed)
+      {
+        mousePressed = true;
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+        onMouseClickEvent(mouseX, mouseY);
+      }
+      break;
+    case SDL_MOUSEBUTTONUP:
+      mousePressed = false;
+    }
+  }
 }
