@@ -53,7 +53,7 @@ void Renderer::Render(int buffer[])
       int index = i * screen_width + j;
       int color = buffer[index];
       SDL_SetRenderDrawColor(sdl_renderer, color, 0, 0, 255);
-      SDL_RenderDrawPoint(sdl_renderer, i, j);
+      SDL_RenderDrawPoint(sdl_renderer, j, i);
     }
 
   SDL_RenderPresent(sdl_renderer);

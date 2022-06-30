@@ -27,8 +27,8 @@ int mandelbrot(double real, double imag)
 
 void initFractal(int buffer[])
 {
-  int width = 379; //number of characters fitting horizontally on my screen
-  int heigth = 98; //number of characters fitting vertically on my screen
+  int width = WINDOW_WIDTH;
+  int heigth = WINDOW_HEIGHT;
 
   double x_start = -2.0;
   double x_fin = 1.0;
