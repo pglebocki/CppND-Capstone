@@ -39,7 +39,7 @@ Renderer::~Renderer()
   SDL_Quit();
 }
 
-void Renderer::Render(int buffer[])
+void Renderer::Render(Color buffer[])
 {
   SDL_SetRenderDrawColor(sdl_renderer, 0, 0, 0, 0);
   SDL_RenderClear(sdl_renderer);
@@ -48,8 +48,8 @@ void Renderer::Render(int buffer[])
     for (int j = 0; j < screen_size; ++j)
     {
       int index = i * screen_size + j;
-      int color = buffer[index];
-      SDL_SetRenderDrawColor(sdl_renderer, color, 0, 0, 255);
+      Color color = buffer[index];
+      SDL_SetRenderDrawColor(sdl_renderer, color.r, color.g, color.b, 255);
       SDL_RenderDrawPoint(sdl_renderer, j, i);
     }
 

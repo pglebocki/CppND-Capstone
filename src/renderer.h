@@ -3,13 +3,14 @@
 
 #include <vector>
 #include "SDL.h"
+#include "color.h"
 
 class Renderer {
  public:
   Renderer(const std::size_t screen_size);
   ~Renderer();
 
-  void Render(int buffer[]);
+  void Render(Color buffer[]);
   void UpdateWindowTitle(int score, int fps);
 
  private:
