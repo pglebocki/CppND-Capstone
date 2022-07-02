@@ -1,6 +1,29 @@
 # CPPND: Capstone Fractal renderer
-This is my capstone "C++" project on Udacity. It's a simple Mandelbrot renderer. 
-Clicking at any point will zoom in 2x.
+
+## Project proposal
+I want to build simple application in window to render Mandelbrot's fractal.
+User would be able to click at any point to zoom in. 
+My project can be base on "Snake game sample code", just reused basic setup + libraries.
+
+## Choosen criteria form the rubric
+1. The submission must compile and run.
+2. The project demonstrates an understanding of C++ functions and control structures.
+3. The project uses Object Oriented Programming techniques.
+4. Classes use appropriate access specifiers for class members.
+5. Class constructors utilize member initialization lists.
+
+## How criteria are satisfied.
+1. Project compiles and run with no error/warnings.
+2. In main.cpp there is functional programming, rest ofthe code is object oriented (classes, struct). Each function encalsulate specific problem.
+3. There are classes responsible to specific domains.
+4. Using private/public access specifier in classes.
+5. See fractal.cpp or controller.cpp.
+
+## Code structure.
+main.cpp - initialize screen buffer create all required objects
+Controller - handling mouse events, notifiy mouse click by callback
+Fractal - calculate and render fractal to given buffer
+Renderer - render given buffer in the window using SDL
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
